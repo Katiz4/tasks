@@ -54,26 +54,6 @@
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="t1 " elementType="Argument">
-            <stringProp name="Argument.name">t1 </stringProp>
-            <stringProp name="Argument.value">300</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="t2" elementType="Argument">
-            <stringProp name="Argument.name">t2</stringProp>
-            <stringProp name="Argument.value">1000</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="t3" elementType="Argument">
-            <stringProp name="Argument.name">t3</stringProp>
-            <stringProp name="Argument.value">2000</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
-      </Arguments>
-      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -90,7 +70,7 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Select" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Select" enabled="true"/>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Select data from a table" enabled="true">
             <stringProp name="dataSource">test</stringProp>
@@ -104,13 +84,7 @@
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as Object</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t2}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Select with an agregate function" enabled="true">
             <stringProp name="dataSource">test</stringProp>
             <stringProp name="queryType">Select Statement</stringProp>
@@ -126,13 +100,7 @@ from
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t3}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Select with Two joins and random function" enabled="true">
             <stringProp name="dataSource">test</stringProp>
             <stringProp name="queryType">Select Statement</stringProp>
@@ -143,7 +111,7 @@ production.categories join production.products on
 production.categories.category_id=production.products.category_id
 join sales.order_items on 
 production.products.product_id=sales.order_items.product_id
-where production.categories.category_id =${__Random(1,7,)}
+where production.categories.category_id =${__Random(1,10,)}
 order by categories.category_id ASC </stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
@@ -153,15 +121,9 @@ order by categories.category_id ASC </stringProp>
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t2}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Insert " enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Insert " enabled="true"/>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Before insert" enabled="true">
             <stringProp name="dataSource">test</stringProp>
@@ -175,13 +137,7 @@ order by categories.category_id ASC </stringProp>
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t2}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Insert Request" enabled="true">
             <stringProp name="dataSource">test</stringProp>
             <stringProp name="queryType">Update Statement</stringProp>
@@ -197,13 +153,7 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t3}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="View inserted data" enabled="true">
             <stringProp name="dataSource">test</stringProp>
             <stringProp name="queryType">Select Statement</stringProp>
@@ -216,15 +166,9 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t2}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Update Controller" enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Update " enabled="true"/>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Before Update " enabled="true">
             <stringProp name="dataSource">test</stringProp>
@@ -238,13 +182,7 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t3}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Update Request" enabled="true">
             <stringProp name="dataSource">test</stringProp>
             <stringProp name="queryType">Update Statement</stringProp>
@@ -258,13 +196,7 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t2}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="View updated data" enabled="true">
             <stringProp name="dataSource">test</stringProp>
             <stringProp name="queryType">Select Statement</stringProp>
@@ -277,15 +209,9 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t3}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Delete " enabled="false"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Delete " enabled="true"/>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Select data tha will be deleted" enabled="true">
             <stringProp name="dataSource">test</stringProp>
@@ -300,13 +226,7 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t3}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Delete Request" enabled="true">
             <stringProp name="dataSource">test</stringProp>
             <stringProp name="queryType">Update Statement</stringProp>
@@ -320,13 +240,7 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t2}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Check if deleted data is present in the DB" enabled="true">
             <stringProp name="dataSource">test</stringProp>
             <stringProp name="queryType">Select Statement</stringProp>
@@ -340,13 +254,7 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t3}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Use collected data" enabled="true"/>
         <hashTree>
@@ -362,13 +270,7 @@ values (${category_id}, &apos;${category_name}&apos;)
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultSetHandler">Store as Object</stringProp>
           </JDBCSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t3}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Save extracted data" enabled="true">
             <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 import java.io.File;
@@ -414,13 +316,7 @@ fstream.close();
             <stringProp name="BeanShellSampler.parameters"></stringProp>
             <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
           </BeanShellSampler>
-          <hashTree>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">${t2}</stringProp>
-              <stringProp name="RandomTimer.range">${t1}</stringProp>
-            </GaussianRandomTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
         </hashTree>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
